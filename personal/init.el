@@ -74,7 +74,7 @@
 
 (flyspell-mode -1)
 
-(transient-mark-mode -1)
+;; (transient-mark-mode -1)
 
 ;; ace-window
 (global-set-key (kbd "M-p") 'ace-window)
@@ -154,6 +154,8 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(define-key helm-find-files-map "\t" 'helm-execute-persistent-action)
+(define-key helm-find-files-map (kbd "<f1>") 'helm-select-action)
 
 (setq
  helm-split-window-in-side-p           t
@@ -254,6 +256,11 @@
 ;; Delay when idle because I want to be able to think without
 ;; completions immediately being called and slowing me down.
 (setq company-idle-delay 0.2)
+(with-eval-after-load 'company
+;  (define-key company-active-map (kbd "M-n") nil)
+;  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 ;; Prohibit semantic from searching through system headers. We want
 ;; company-clang to do that for us.
