@@ -88,7 +88,6 @@
     (?2 aw-split-window-vert " Ace - Split Vert Window")
     (?3 aw-split-window-horz " Ace - Split Horz Window")
     (?1 delete-other-windows " Ace - Maximize Window")
-    (?1 delete-other-windows)
     (?b balance-windows))
   "List of actions for `aw-dispatch-default'.")
 
@@ -541,7 +540,7 @@
 ;; the font color under Menu Bar->Options->Appearance->Font For...
 ;; and then setting "Adopt Face and Frame Parameter as Frame Default"
 (when window-system
-  (load-theme 'solarized-dark)
+  (load-theme 'sanityinc-solarized-dark)
   )
 ;; (if window-system
 ;;     (load-theme 'deeper-blue t)
