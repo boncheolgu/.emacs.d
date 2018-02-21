@@ -33,7 +33,8 @@
          hungry-delete iedit irony
          let-alist levenshtein magit markdown-mode pkg-info
          popup seq solarized-theme switch-window vlf web-mode
-         window-numbering writegood-mode yasnippet))
+         window-numbering writegood-mode yasnippet
+         color-theme-sanityinc-solarized))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configure flycheck
