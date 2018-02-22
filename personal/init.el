@@ -310,10 +310,6 @@
 ;; C++ keys
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'cc-mode)
-;; Compiling:
-(define-key c++-mode-map (kbd "C-c C-c") 'compile)
-;; Change compilation command:
-(setq compile-command "cmake --build build")
 
 
 ;; Load glasses mode, which turns camel notation from
@@ -370,6 +366,11 @@
             (writegood-mode)))
 
 (defun comatose/c-mode-hook ()
+  ;; Compiling:
+  (define-key c++-mode-map (kbd "C-c C-c") 'compile)
+  ;; Change compilation command:
+  (setq compile-command "cmake --build build")
+
   ;; Enable Google style things
   ;; This prevents the extra two spaces in a namespace that Emacs
   ;; otherwise wants to put... Gawd!
