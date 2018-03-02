@@ -24,7 +24,7 @@
 ;; Set packages to install
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (prelude-require-packages
- '(ace-window async auctex auto-complete clang-format cmake-ide
+ '(ace-window ag async auctex auto-complete clang-format cmake-ide
          cmake-mode company company-irony
          company-irony-c-headers dash epl flycheck
          flycheck-irony flycheck-pyflakes
@@ -408,7 +408,8 @@
   ;; (flycheck-select-checker 'rtags)
   ;; (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
   ;; (setq-local flycheck-check-syntax-automatically nil)
-  )
+  (add-hook 'before-save-hook 'clang-format-buffer nil t)
+)
 
 (add-hook 'prelude-c-mode-common-hook 'comatose/c-mode-hook 1)
 
@@ -699,3 +700,5 @@
 
 (provide '.emacs)
 ;;; .emacs ends here
+
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
