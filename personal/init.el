@@ -34,7 +34,7 @@
          let-alist levenshtein magit markdown-mode pkg-info
          popup seq solarized-theme switch-window vlf web-mode
          window-numbering writegood-mode yasnippet
-         color-theme-sanityinc-solarized))
+         color-theme-sanityinc-solarized yaml-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configure flycheck
@@ -549,8 +549,12 @@
 ;;     (load-theme 'deeper-blue t)
 ;;   (load-theme 'wheatgrass t))
 
-;; Set the background color for the header.
-(custom-set-faces '(header-line ((t (:background "#003366")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 113 :width normal)))))
 
 ;; company-mode colors. These are borrowed from Solarized and tweaked to look better
 ;; with deeper-blue. Could use improvement but I have no time.
@@ -572,9 +576,10 @@
 ;; I don't care to see the splash screen
 (setq inhibit-splash-screen t)
 
+;; Hide the scroll bar
+(set-scroll-bar-mode nil)
+
 (when (display-graphic-p)
-  ;; Hide the scroll bar
-  (scroll-bar-mode -1)
   (defvar my-font-size 110)
   ;; Make mode bar small
   (set-face-attribute 'mode-line nil  :height my-font-size)
