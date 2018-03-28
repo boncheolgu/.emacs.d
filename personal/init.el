@@ -554,24 +554,30 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 113 :width normal)))))
+ '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 113 :width normal))))
+ '(magit-diff-added ((t (:foreground "gray20"))))
+ '(magit-diff-added-highlight ((t (:foreground "gray20"))))
+ '(magit-diff-removed ((t (:foreground "gray20"))))
+ '(magit-diff-removed-highlight ((t (:foreground "gray20"))))
+ )
+
 
 ;; company-mode colors. These are borrowed from Solarized and tweaked to look better
 ;; with deeper-blue. Could use improvement but I have no time.
-(custom-set-faces
- '(company-template-field ((t (:background "#7B6000" :foreground "#073642"))))
- '(company-tooltip ((t (:background "black" :foreground "DeepSkyBlue1"))))
- '(company-tooltip-selection ((t (:background "DodgerBlue4" :foreground "CadetBlue1"))))
- '(company-tooltip-mouse ((t (:background "DodgerBlue4" :foreground "CadetBlue1"))))
- '(company-tooltip-mouse ((t (:background "#69CABF" :foreground "#00736F"))))
- '(company-tooltip-common ((t (:foreground "#93a1a1" :underline t))))
- '(company-tooltip-common-selection ((t (:foreground "#93a1a1" :underline t))))
- '(company-tooltip-annotation ((t (:foreground "#93a1a1" :background "#073642"))))
- '(company-scrollbar-fg ((t (:foreground "#002b36" :background "#839496"))))
- '(company-scrollbar-bg ((t (:background "#073642" :foreground "#2aa198"))))
- '(company-preview ((t (:background "#073642" :foreground "#2aa198"))))
- '(company-preview-common ((t (:foreground "#93a1a1" :underline t))))
- )
+;; (custom-set-faces
+;;  '(company-template-field ((t (:background "#7B6000" :foreground "#073642"))))
+;;  '(company-tooltip ((t (:background "black" :foreground "DeepSkyBlue1"))))
+;;  '(company-tooltip-selection ((t (:background "DodgerBlue4" :foreground "CadetBlue1"))))
+;;  '(company-tooltip-mouse ((t (:background "DodgerBlue4" :foreground "CadetBlue1"))))
+;;  '(company-tooltip-mouse ((t (:background "#69CABF" :foreground "#00736F"))))
+;;  '(company-tooltip-common ((t (:foreground "#93a1a1" :underline t))))
+;;  '(company-tooltip-common-selection ((t (:foreground "#93a1a1" :underline t))))
+;;  '(company-tooltip-annotation ((t (:foreground "#93a1a1" :background "#073642"))))
+;;  '(company-scrollbar-fg ((t (:foreground "#002b36" :background "#839496"))))
+;;  '(company-scrollbar-bg ((t (:background "#073642" :foreground "#2aa198"))))
+;;  '(company-preview ((t (:background "#073642" :foreground "#2aa198"))))
+;;  '(company-preview-common ((t (:foreground "#93a1a1" :underline t))))
+;;  )
 
 ;; I don't care to see the splash screen
 (setq inhibit-splash-screen t)
@@ -604,92 +610,92 @@
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Enable which function mode and set the header line to display both the
-;; path and the function we're in
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(which-function-mode t)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; Enable which function mode and set the header line to display both the
+;; ;; path and the function we're in
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (which-function-mode t)
 
-;; Remove function from mode bar
-(setq mode-line-misc-info
-      (delete (assoc 'which-func-mode
-                     mode-line-misc-info) mode-line-misc-info))
+;; ;; Remove function from mode bar
+;; (setq mode-line-misc-info
+;;       (delete (assoc 'which-func-mode
+;;                      mode-line-misc-info) mode-line-misc-info))
 
 
-(defmacro with-face
-    (str &rest properties)
-  `(propertize ,str 'face (list ,@properties)))
+;; (defmacro with-face
+;;     (str &rest properties)
+;;   `(propertize ,str 'face (list ,@properties)))
 
-(defun sl/make-header ()
-  "."
-  (let* ((sl/full-header (abbreviate-file-name buffer-file-name))
-         (sl/header (file-name-directory sl/full-header))
-         (sl/drop-str "[...]")
-         )
-    (if (> (length sl/full-header)
-           (window-body-width))
-        (if (> (length sl/header)
-               (window-body-width))
-            (progn
-              (concat (with-face sl/drop-str
-                                 :background "blue"
-                                 :weight 'bold
-                                 )
-                      (with-face (substring sl/header
-                                            (+ (- (length sl/header)
-                                                  (window-body-width))
-                                               (length sl/drop-str))
-                                            (length sl/header))
-                                 ;; :background "red"
-                                 :weight 'bold
-                                 )))
-          (concat
-           (with-face sl/header
-                      ;; :background "red"
-                      :foreground "red"
-                      :weight 'bold)))
-      (concat (if window-system ;; In the terminal the green is hard to read
-                  (with-face sl/header
-                             ;; :background "green"
-                             ;; :foreground "black"
-                             :weight 'bold
-                             :foreground "#8fb28f"
-                             )
-                (with-face sl/header
-                           ;; :background "green"
-                           ;; :foreground "black"
-                           :weight 'bold
-                           :foreground "blue"
-                           ))
-              (with-face (file-name-nondirectory buffer-file-name)
-                         :weight 'bold
-                         ;; :background "red"
-                         )))))
+;; (defun sl/make-header ()
+;;   "."
+;;   (let* ((sl/full-header (abbreviate-file-name buffer-file-name))
+;;          (sl/header (file-name-directory sl/full-header))
+;;          (sl/drop-str "[...]")
+;;          )
+;;     (if (> (length sl/full-header)
+;;            (window-body-width))
+;;         (if (> (length sl/header)
+;;                (window-body-width))
+;;             (progn
+;;               (concat (with-face sl/drop-str
+;;                                  :background "blue"
+;;                                  :weight 'bold
+;;                                  )
+;;                       (with-face (substring sl/header
+;;                                             (+ (- (length sl/header)
+;;                                                   (window-body-width))
+;;                                                (length sl/drop-str))
+;;                                             (length sl/header))
+;;                                  ;; :background "red"
+;;                                  :weight 'bold
+;;                                  )))
+;;           (concat
+;;            (with-face sl/header
+;;                       ;; :background "red"
+;;                       :foreground "red"
+;;                       :weight 'bold)))
+;;       (concat (if window-system ;; In the terminal the green is hard to read
+;;                   (with-face sl/header
+;;                              ;; :background "green"
+;;                              ;; :foreground "black"
+;;                              :weight 'bold
+;;                              :foreground "#8fb28f"
+;;                              )
+;;                 (with-face sl/header
+;;                            ;; :background "green"
+;;                            ;; :foreground "black"
+;;                            :weight 'bold
+;;                            :foreground "blue"
+;;                            ))
+;;               (with-face (file-name-nondirectory buffer-file-name)
+;;                          :weight 'bold
+;;                          ;; :background "red"
+;;                          )))))
 
-(defun sl/display-header ()
-  "Create the header string and display it."
-  ;; The dark blue in the header for which-func is terrible to read.
-  ;; However, in the terminal it's quite nice
-  (if window-system
-      (custom-set-faces
-       '(which-func ((t (:foreground "#8fb28f")))))
-    (custom-set-faces
-     '(which-func ((t (:foreground "blue"))))))
-  ;; Set the header line
-  (setq header-line-format
+;; (defun sl/display-header ()
+;;   "Create the header string and display it."
+;;   ;; The dark blue in the header for which-func is terrible to read.
+;;   ;; However, in the terminal it's quite nice
+;;   (if window-system
+;;       (custom-set-faces
+;;        '(which-func ((t (:foreground "#8fb28f")))))
+;;     (custom-set-faces
+;;      '(which-func ((t (:foreground "blue"))))))
+;;   ;; Set the header line
+;;   (setq header-line-format
 
-        (list "-"
-              '(which-func-mode ("" which-func-format))
-              '("" ;; invocation-name
-                (:eval (if (buffer-file-name)
-                           (concat "[" (sl/make-header) "]")
-                         "[%b]")))
-              )
-        )
-  )
-;; Call the header line update
-(add-hook 'buffer-list-update-hook
-          'sl/display-header)
+;;         (list "-"
+;;               '(which-func-mode ("" which-func-format))
+;;               '("" ;; invocation-name
+;;                 (:eval (if (buffer-file-name)
+;;                            (concat "[" (sl/make-header) "]")
+;;                          "[%b]")))
+;;               )
+;;         )
+;;   )
+;; ;; Call the header line update
+;; (add-hook 'buffer-list-update-hook
+;;           'sl/display-header)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package: yasnippet
