@@ -1,28 +1,32 @@
 (prelude-require-packages
- '(rust-mode cargo lsp-mode lsp-rust company-lsp))
+ '(rust-mode cargo lsp-rust lsp-ui company-lsp racer))
 
-(require 'lsp-imenu)
-(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
-
-(setq rust-format-on-save t)
+(require 'rust-mode)
+(require 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
-(add-hook 'rust-mode-hook #'lsp-mode)
+;; (add-hook 'rust-mode-hook #'lsp-mode)
 (add-hook 'rust-mode-hook #'flycheck-mode)
 (add-hook 'rust-mode-hook
           (lambda ()
-            (define-key rust-mode-map (kbd "<tab>") 'company-complete)
+            ;; (define-key rust-mode-map (kbd "<tab>") 'company-complete)
             (define-key rust-mode-map (kbd "C-c C-n") 'next-error)
             (define-key rust-mode-map (kbd "C-c C-p") 'previous-error)
             (define-key rust-mode-map (kbd "M-i") 'helm-imenu)
+            ;; (define-key rust-mode-map (kbd "M-i") 'lsp-ui-imenu)
+            (define-key rust-mode-map (kbd "TAB") #'completion-at-point)
+            ;; (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+            (setq company-tooltip-align-annotations t)
+            (define-key rust-mode-map (kbd "C-<tab>") #'racer-describe-tooltip)
+
+            (setq rust-format-on-save t)
+
+            ;; (require 'company-lsp)
+            ;; (push 'company-lsp company-backends)
 ))
+(add-hook 'rust-mode-hook 'subword-mode)
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
 
-(with-eval-after-load 'lsp-mode
-  (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
-  (require 'lsp-flycheck)
-  (require 'lsp-rust)
-
-  (require 'company-lsp)
-
-  ;; (push 'company-lsp company-backends)
-)

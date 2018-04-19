@@ -383,7 +383,7 @@
   (hs-minor-mode)
 
   ;; (c-toggle-hungry-state 1)
-  ;; (subword-mode 1)
+  (subword-mode 1)
   ;; (global-cwarn-mode 1)
 
   ;; (define-key c-mode-base-map "\C-j" 'c-context-line-break)
@@ -549,18 +549,6 @@
 ;;     (load-theme 'deeper-blue t)
 ;;   (load-theme 'wheatgrass t))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 113 :width normal))))
- '(magit-diff-added ((t (:foreground "gray20"))))
- '(magit-diff-added-highlight ((t (:foreground "gray20"))))
- '(magit-diff-removed ((t (:foreground "gray20"))))
- '(magit-diff-removed-highlight ((t (:foreground "gray20"))))
- )
-
 
 ;; company-mode colors. These are borrowed from Solarized and tweaked to look better
 ;; with deeper-blue. Could use improvement but I have no time.
@@ -713,3 +701,18 @@
 ;;; .emacs ends here
 
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+(custom-set-variables
+ '(split-height-threshold 200))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 113 :width normal))))
+ '(magit-diff-added ((t (:foreground "gray20"))))
+ '(magit-diff-added-highlight ((t (:foreground "gray20"))))
+ '(magit-diff-removed ((t (:foreground "gray20"))))
+ '(magit-diff-removed-highlight ((t (:foreground "gray20"))))
+ )
