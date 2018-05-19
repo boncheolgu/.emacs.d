@@ -16,7 +16,7 @@
 (require 'prelude-key-chord) ;; Binds useful features to key combinations
 ;; (require 'prelude-latex)
 (require 'prelude-lisp)
-(require 'prelude-mediawiki)
+;; (require 'prelude-mediawiki)
 (require 'prelude-org) ;; Org-mode helps you keep TODO lists, notes and more
 (require 'prelude-perl)
 (require 'prelude-python)
