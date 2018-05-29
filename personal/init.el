@@ -104,6 +104,8 @@
 (setq switch-window-qwerty-shortcuts
       '("a" "s" "d" "f" "j" "k" "l" ";" "w" "e" "i" "o"))
 
+(setq window-combination-resize t)
+
 ;; iedit-mode
 (require 'iedit)
 
