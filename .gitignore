@@ -24,6 +24,4 @@ tramp
 network-security.data
 irony
 personal/custom.el
-prelude-cheatsheet.el
-prelude-cheatsheet.aux
-prelude-cheatsheet.log
+.dir-locals.el
