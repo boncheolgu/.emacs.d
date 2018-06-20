@@ -47,6 +47,7 @@
 (setq switch-window-shortcut-style 'qwerty)
 (setq switch-window-qwerty-shortcuts
       '("a" "s" "d" "f" "j" "k" "l" ";" "w" "e" "i" "o"))
+(setq window-combination-resize t)
 
 (setq default-input-method "korean-hangul")
 (global-set-key (kbd "<Hangul>") 'toggle-input-method)

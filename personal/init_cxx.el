@@ -1,18 +1,28 @@
 (prelude-require-packages
- '(cmake-ide rtags helm-rtags cmake-project))
+ '(cmake-ide cmake-project))
+
+(when (file-exists-p "~/src/rtags/build/src")
+  (load-file "~/src/rtags/build/src/rtags.el")
+  (load-file "~/src/rtags/build/src/company-rtags.el")
+  ;; (load-file "~/src/rtags/build/src/flycheck-rtags.el")
+  (load-file "~/src/rtags/build/src/helm-rtags.el")
+
+  ;; Load rtags and start the cmake-ide-setup process
+  (require 'rtags)
+
+  (setq rtags-autostart-diagnostics t)
+  ;; (rtags-diagnostics)
+  (setq rtags-completions-enabled t)
+  (push 'company-rtags company-backends)
+  (rtags-enable-standard-keybindings c-mode-base-map "C-x r ")
+  
+  (setq rtags-use-helm t)
+  (setq rtags-tramp-enabled t)
+  )
 
 (cmake-ide-setup)
 ;; Set cmake-ide-flags-c++ to use C++1z
 (setq cmake-ide-flags-c++ (append '("-std=c++1z")))
-
-(setq rtags-autostart-diagnostics t)
-;; (rtags-diagnostics)
-(setq rtags-completions-enabled t)
-(push 'company-rtags company-backends)
-(rtags-enable-standard-keybindings c-mode-base-map "C-x r ")
-(rtags-enable-standard-keybindings)
-
-(setq rtags-use-helm t)
 
 (defun comatose/c-mode-hook ()
   ;; Compiling:
