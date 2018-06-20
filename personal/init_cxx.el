@@ -1,5 +1,5 @@
 (prelude-require-packages
- '(cmake-ide rtags helm-rtags))
+ '(cmake-ide rtags helm-rtags cmake-project))
 
 (cmake-ide-setup)
 ;; Set cmake-ide-flags-c++ to use C++1z
@@ -43,6 +43,8 @@
   (setq flycheck-clang-language-standard "c++1z")
 
   (add-hook 'before-save-hook 'clang-format-buffer nil t)
+
+  (if (file-exists-p "CMakeLists.txt") (cmake-project-mode))
 )
 
 (add-hook 'prelude-c-mode-common-hook 'comatose/c-mode-hook 1)
