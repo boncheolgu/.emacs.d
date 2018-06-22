@@ -26,7 +26,10 @@
 
 (defun comatose/c-mode-hook ()
   ;; Compiling:
-  (define-key c++-mode-map (kbd "C-c C-c") 'cmake-ide-compile)
+  (define-key c-mode-base-map (kbd "C-c C-n") 'next-error)
+  (define-key c-mode-base-map (kbd "C-c C-p") 'previous-error)
+  (define-key c-mode-base-map (kbd "M-i") 'helm-imenu)
+  (define-key c-mode-base-map (kbd "C-c C-c") 'cmake-ide-compile)
   ;; Change compilation command:
   (setq compile-command "cmake --build build")
 
