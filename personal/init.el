@@ -180,22 +180,12 @@
 ;; I don't care to see the splash screen
 (setq inhibit-splash-screen t)
 
-;; Hide the scroll bar
-(set-scroll-bar-mode nil)
-
 (when (display-graphic-p)
-  (defvar my-font-size 110)
-  ;; Make mode bar small
-  (set-face-attribute 'mode-line nil  :height my-font-size)
-  ;; Set the header bar font
-  (set-face-attribute 'header-line nil  :height my-font-size)
   ;; Set default window size and position
   (setq default-frame-alist
         '((top . 0) (left . 0) ;; position
           (width . 110) (height . 90) ;; size
           ))
-  ;; Set the font to size 9 (90/10).
-  (set-face-attribute 'default nil :height my-font-size)
   )
 
 (unless (display-graphic-p)
@@ -224,6 +214,18 @@
 (custom-set-variables
  '(split-height-threshold 200))
 
-(custom-set-faces
- '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 113 :width normal))))
- )
+(defun init-appearance (_)
+  (set-scroll-bar-mode nil)  ;; Hide the scroll-bar
+
+  (custom-set-faces
+   '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 111 :width normal))))
+   )
+  )
+
+(init-appearance nil)
+
+;; Add the following hook, if spawned emacsclient windows have different appearance.
+;; (add-to-list 'after-make-frame-functions #'init-appearance t)
+(provide 'init)
+
+;;; init.el ends here
