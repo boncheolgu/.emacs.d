@@ -31,3 +31,4 @@
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
 
+(add-hook 'cargo-process-mode-hook (lambda () (setq truncate-lines nil)))
