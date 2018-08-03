@@ -14,10 +14,10 @@
 (prelude-require-packages
  '(ace-window ag async auctex auto-complete clang-format
               cmake-mode company dash epl
-              google-c-style helm helm-core helm-ls-git helm-ls-hg
+              google-c-style helm helm-core helm-ls-git helm-ls-hg hungry-delete
               iedit let-alist levenshtein magit markdown-mode pkg-info
               popup seq solarized-theme switch-window vlf web-mode
-              window-numbering writegood-mode yasnippet 
+              window-numbering writegood-mode yasnippet
               color-theme-sanityinc-solarized yaml-mode toml-mode))
 
 ;; (transient-mark-mode -1)
