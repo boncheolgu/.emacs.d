@@ -22,6 +22,8 @@
 
 ;; (transient-mark-mode -1)
 
+(setq delete-by-moving-to-trash t)
+
 ;; ace-window
 (global-set-key (kbd "M-p") 'ace-window)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
