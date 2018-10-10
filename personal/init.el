@@ -22,7 +22,11 @@
 
 ;; (transient-mark-mode -1)
 
+(setq flycheck-global-modes nil)
+
 (setq delete-by-moving-to-trash t)
+
+(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 ;; ace-window
 (global-set-key (kbd "M-p") 'ace-window)

@@ -6,6 +6,7 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (push 'company-racer company-backends)
 
+(add-hook 'cargo-process-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
 ;; (add-hook 'rust-mode-hook #'lsp-mode)
 ;; (add-hook 'rust-mode-hook #'flycheck-mode)
