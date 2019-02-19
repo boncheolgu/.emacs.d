@@ -20,7 +20,7 @@
               window-numbering writegood-mode yasnippet
               color-theme-sanityinc-solarized yaml-mode toml-mode))
 
-;; (transient-mark-mode -1)
+(transient-mark-mode -1)
 
 (setq flycheck-global-modes nil)
 
