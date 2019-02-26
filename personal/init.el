@@ -223,9 +223,10 @@
 (defun init-appearance (_)
   (set-scroll-bar-mode nil)  ;; Hide the scroll-bar
 
-  (custom-set-faces
-   '(default ((t (:family "NanumGothicCoding" :foundry "SAND" :slant normal :weight normal :height 111 :width normal))))
-   )
+  ;; default font for English
+  (set-face-attribute 'default nil :family "NanumGothicCoding")
+  ;; default font for Korean
+  (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
   )
 
 (init-appearance nil)
