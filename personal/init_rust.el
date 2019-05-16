@@ -1,12 +1,12 @@
 (prelude-require-packages
- '(lsp-ui company-lsp))
+ '(lsp-ui company-lsp flycheck-rust))
 
 (push 'company-lsp company-backends)
 
 (add-hook 'rust-mode-hook
           (lambda ()
-            ;; (flycheck-mode)
-            (lsp-ui-mode)
+            (lsp-ui-doc-mode -1)
+
             (define-key rust-mode-map (kbd "C-c C-n") 'next-error)
             (define-key rust-mode-map (kbd "C-c C-p") 'previous-error)
             ;; (define-key rust-mode-map (kbd "M-i") 'helm-imenu)
