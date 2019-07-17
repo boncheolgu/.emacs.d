@@ -17,6 +17,6 @@
 (add-hook 'cargo-process-mode-hook
           (lambda ()
             (setq truncate-lines nil)
-            ('ansi-color-for-comint-mode-on)
+            (ansi-color-for-comint-mode-on)
             ))
 
