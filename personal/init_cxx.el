@@ -1,6 +1,8 @@
 (prelude-require-packages
  '(cmake-ide cmake-project))
 
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
+
 (load "rtags/rtags.el")
 (load "rtags/company-rtags.el")
 (load "rtags/flycheck-rtags.el")

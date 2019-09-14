@@ -18,7 +18,9 @@
               iedit let-alist levenshtein magit markdown-mode pkg-info
               popup seq solarized-theme switch-window vlf web-mode
               window-numbering writegood-mode yasnippet
-              color-theme-sanityinc-solarized yaml-mode toml-mode))
+              color-theme-sanityinc-solarized yaml-mode toml-mode quelpa))
+
+(key-chord-unset-global "jl") ; for julia
 
 (transient-mark-mode -1)
 
