@@ -18,7 +18,8 @@
               iedit let-alist levenshtein magit markdown-mode pkg-info
               popup seq solarized-theme switch-window vlf web-mode
               window-numbering writegood-mode yasnippet
-              color-theme-sanityinc-solarized yaml-mode toml-mode quelpa))
+              color-theme-sanityinc-solarized yaml-mode toml-mode quelpa smex
+              dumb-diff dumb-jump))
 
 (key-chord-unset-global "jl") ; for julia
 
@@ -52,6 +53,11 @@
 (global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
 (global-set-key (kbd "C-x 0") 'switch-window-then-delete)
 
+;; dumb-jump
+(global-unset-key (kbd "C-j"))
+(global-set-key (kbd "C-j .") 'dumb-jump-go)
+(global-set-key (kbd "C-j ,") 'dumb-jump-back)
+
 (setq switch-window-shortcut-style 'qwerty)
 (setq switch-window-qwerty-shortcuts
       '("a" "s" "d" "f" "j" "k" "l" ";" "w" "e" "i" "o"))
@@ -60,6 +66,10 @@
 (setq default-input-method "korean-hangul")
 ;; (global-set-key (kbd "<Hangul>") 'toggle-input-method)
 ;; (global-set-key (kbd "S-SPC") 'toggle-input-method)
+
+(custom-set-faces
+ '(magit-diff-added ((t (:background "dark green"))))
+ '(magit-diff-added-highlight ((t (:background "dark green")))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set up helm
