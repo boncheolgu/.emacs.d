@@ -6,6 +6,7 @@
 (add-hook 'rust-mode-hook
           (lambda ()
             (lsp-ui-doc-mode -1)
+            (setq lsp-file-watch-threshold 2000)
 
             (define-key rust-mode-map (kbd "C-c C-n") 'next-error)
             (define-key rust-mode-map (kbd "C-c C-p") 'previous-error)
