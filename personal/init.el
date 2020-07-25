@@ -57,6 +57,7 @@
 (global-unset-key (kbd "C-j"))
 (global-set-key (kbd "C-j .") 'dumb-jump-go)
 (global-set-key (kbd "C-j ,") 'dumb-jump-back)
+(global-set-key (kbd "C-j /") 'dumb-jump-go-prompt)
 
 (setq switch-window-shortcut-style 'qwerty)
 (setq switch-window-qwerty-shortcuts
