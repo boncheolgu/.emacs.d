@@ -3,6 +3,8 @@
 
 (push 'company-lsp company-backends)
 
+(setq lsp-rust-server 'rust-analyzer)
+
 (add-hook 'rust-mode-hook
           (lambda ()
             (lsp-ui-doc-mode -1)
