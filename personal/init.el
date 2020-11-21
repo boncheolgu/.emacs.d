@@ -191,7 +191,7 @@
 ;; appears black in Aquamacs. This can be fixed by setting
 ;; the font color under Menu Bar->Options->Appearance->Font For...
 ;; and then setting "Adopt Face and Frame Parameter as Frame Default"
-(when window-system
+(when (display-graphic-p)
   ;; (color-theme-sanityinc-solarized-dark)
   (load-theme 'sanityinc-solarized-dark)
   )
