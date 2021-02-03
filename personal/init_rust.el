@@ -7,6 +7,9 @@
 
 (add-hook 'rust-mode-hook
           (lambda ()
+            (setq rust-format-goto-problem nil)
+            (setq rust-format-show-buffer nil)
+
             (lsp-ui-doc-mode -1)
             (setq lsp-file-watch-threshold 10000)
 
