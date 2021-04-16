@@ -19,7 +19,7 @@
               popup seq solarized-theme switch-window vlf web-mode
               window-numbering writegood-mode yasnippet
               color-theme-sanityinc-solarized yaml-mode toml-mode quelpa smex
-              dumb-diff dumb-jump))
+              dumb-diff dumb-jump xterm-color))
 
 (key-chord-unset-global "jl") ; for julia
 
@@ -28,8 +28,6 @@
 (setq flycheck-global-modes nil)
 
 (setq delete-by-moving-to-trash t)
-
-(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 ;; ace-window
 (global-set-key (kbd "M-p") 'ace-window)
@@ -232,6 +230,17 @@
 
 (custom-set-variables
  '(split-height-threshold 200))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Package: xterm-color
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq compilation-environment '("TERM=xterm-256color"))
+
+(defun my/advice-compilation-filter (f proc string)
+  (funcall f proc (xterm-color-filter string)))
+
+(advice-add 'compilation-filter :around #'my/advice-compilation-filter)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun init-appearance (_)
   (set-scroll-bar-mode nil)  ;; Hide the scroll-bar
